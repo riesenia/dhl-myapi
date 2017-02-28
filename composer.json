@@ -1,0 +1,20 @@
+{
+    "name": "riesenia/dhl-myapi",
+    "description": "DHL MyApi PHP client implementation",
+    "license": "LGPL-3.0",
+    "authors": [
+        {
+            "name": "Tomas Saghy",
+            "email": "segy@riesenia.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "salamek/ppl-my-api": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Riesenia\\DhlMyApi\\": "src/"
+        }
+    }
+}
