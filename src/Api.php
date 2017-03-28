@@ -4,6 +4,7 @@ namespace Riesenia\DhlMyApi;
 use Salamek\PplMyApi\Api as PplApi;
 use Salamek\PplMyApi\Exception\OfflineException;
 use Salamek\PplMyApi\Exception\SecurityException;
+use Salamek\PplMyApi\Exception\WrongDataException;
 
 /**
  * Class Client
@@ -13,7 +14,7 @@ use Salamek\PplMyApi\Exception\SecurityException;
 class Api extends PplApi
 {
     /** @var string */
-    private $wsdl = 'https://myapi.dhlparcel.sk/MyAPI.svc?wsdl';
+    protected $wsdl = 'https://myapi.dhlparcel.sk/MyAPI.svc?wsdl';
 
     /**
      * MyApi constructor

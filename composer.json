@@ -8,6 +8,12 @@
             "email": "segy@riesenia.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/segy/PplMyApi"
+        }
+    ],
     "require": {
         "php": ">=5.4",
         "salamek/ppl-my-api": "dev-master"
