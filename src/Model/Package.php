@@ -9,71 +9,6 @@ use Salamek\PplMyApi\Exception\WrongDataException;
 class Package extends PplPackage
 {
     /**
-     * Package constructor
-     *
-     * @param null|integer $seriesNumberId
-     * @param int $packageProductType
-     * @param float $weight
-     * @param string $note
-     * @param string $depoCode
-     * @param Sender $sender
-     * @param Recipient $recipient
-     * @param null|SpecialDelivery $specialDelivery
-     * @param null|PaymentInfo $paymentInfo
-     * @param ExternalNumber[] $externalNumbers
-     * @param PackageService[] $packageServices
-     * @param Flag[] $flags
-     * @param null|PalletInfo $palletInfo
-     * @param null|WeightedPackageInfo $weightedPackageInfo
-     * @param integer $packageCount
-     * @param integer $packagePosition
-     * @throws WrongDataException
-     */
-    public function __construct(
-        $seriesNumberId,
-        $packageProductType,
-        $weight,
-        $note,
-        $depoCode,
-        Sender $sender,
-        Recipient $recipient,
-        SpecialDelivery $specialDelivery = null,
-        PaymentInfo $paymentInfo = null,
-        array $externalNumbers = [],
-        array $packageServices = [],
-        array $flags = [],
-        PalletInfo $palletInfo = null,
-        WeightedPackageInfo $weightedPackageInfo = null,
-        $packageCount = 1,
-        $packagePosition = 1
-    ) {
-        if (in_array($packageProductType, Product::$cashOnDelivery) && is_null($paymentInfo)) {
-            throw new WrongDataException('$paymentInfo must be set if product type is CoD');
-        }
-
-        $this->setPackageProductType($packageProductType);
-        $this->setWeight($weight);
-        $this->setNote($note);
-        $this->setDepoCode($depoCode);
-        $this->setSender($sender);
-        $this->setRecipient($recipient);
-        $this->setSpecialDelivery($specialDelivery);
-        $this->setPaymentInfo($paymentInfo);
-        $this->setExternalNumbers($externalNumbers);
-        $this->setPackageServices($packageServices);
-        $this->setFlags($flags);
-        $this->setPalletInfo($palletInfo);
-        $this->setWeightedPackageInfo($weightedPackageInfo);
-        $this->setPackageCount($packageCount);
-        $this->setPackagePosition($packagePosition);
-
-
-        if (!is_null($seriesNumberId)) {
-            $this->setSeriesNumberId($seriesNumberId);
-        }
-    }
-
-    /**
      * @param $seriesNumberId
      * @throws WrongDataException
      */
@@ -111,5 +46,18 @@ class Package extends PplPackage
         }
 
         $this->depoCode = $depoCode;
+    }
+
+    /**
+     * @param int
+     * @return bool
+     */
+    public function isCashOnDelivery($packageProductType = null)
+    {
+        if (is_null($packageProductType)) {
+            $packageProductType = $this->getPackageProductType();
+        }
+
+        return in_array($packageProductType, Product::$cashOnDelivery);
     }
 }
