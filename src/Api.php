@@ -35,7 +35,7 @@ class Api extends PplApi
         $this->username = $username;
         $this->password = $password;
         $this->customerId = $customerId;
-        $this->securedStorage = sys_get_temp_dir() . '/' . __CLASS__;
+        $this->securedStorage = sys_get_temp_dir() . '/DhlApi';
 
         try {
             $this->soap = new \SoapClient($this->wsdl);
