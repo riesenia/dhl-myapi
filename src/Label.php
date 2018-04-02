@@ -17,7 +17,8 @@ class Label extends PplLabel
             'logo' => __DIR__ . '/../assets/logo.png',
             'phone' => '',
             'email' => 'E-mail: infoSK@dhl.com',
-            'web' => 'http://www.dhlarcel.sk'
+            'web' => 'http://www.dhlparcel.sk'
         ];
     }
 }
+  
