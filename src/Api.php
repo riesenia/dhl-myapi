@@ -53,13 +53,13 @@ class Api extends PplApi
      *
      * @return mixed
      */
-    public function getNumberRange(array $config)
+    public function getNumberRange(array $config, $quantity = 1000)
     {
         $result = $this->soap->getNumberRange([
             'NumberRanges' => [
                 'NumberRangeRequest' => [
                     'PackProductType' => $config['product_type'],
-                    'Quantity' => 1000
+                    'Quantity' => $quantity
                 ]
             ]
         ]);
