@@ -47,4 +47,24 @@ class Api extends PplApi
             throw new OfflineException('DHL MyAPI is offline');
         }
     }
+    
+    /**
+     * Get number range from Api.
+     *
+     * @return mixed
+     */
+    public function getNumberRange(array $config)
+    {
+        $result = $this->soap->getNumberRange([
+            'NumberRanges' => [
+                'NumberRangeRequest' => [
+                    'PackProductType' => $config['product_type'],
+                    'Quantity' => 1000
+                ]
+            ]
+        ]);
+
+        return $result->GetNumberRangResult->ResultData->NumberRange;
+
+    }
 }
